@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project Name
 
 > Project description
@@ -37,3 +38,6 @@ npm install -g webpack
 npm install
 ```
 
+=======
+# images
+>>>>>>> 6b15636f2e409e9f12c378d0cb7cc59980ba2056
