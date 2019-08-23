@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Listing = require('../models/listings.js');
+const db = require('../database/listings.js');
 
 
 // mongoose is connected to our appData database
@@ -25,7 +25,7 @@ const listingsGenerator = function () {
     let imageCount = 0;
     const listingImages = [];
     const imagesUsedObj = {};
-    const newListing = new Listing({
+    const newListing = new db.listing({
       listingId: listingsCount,
       images: [],
     });
