@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
+mongoose.connect('mongodb://localhost/appData');
 // A schema for each image that is going to be stored in the images property of a listing.
 const imageSchema = new Schema({
   imageId: Number,
@@ -19,4 +19,17 @@ const listingSchema = new Schema({
 
 const listing = mongoose.model('listing', listingSchema);
 
-module.exports = listing;
+const getAll = function(callback){
+  listing.find({}).exec((err, data) => {
+    if(err){
+      callback(err)
+    } else {
+      callback(null, data)
+    }
+  })
+}
+
+module.exports={
+  listing,
+  getAll
+}
