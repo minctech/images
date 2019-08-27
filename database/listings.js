@@ -19,8 +19,8 @@ const listingSchema = new Schema({
 
 const listing = mongoose.model('listing', listingSchema);
 
-const getAll = function(callback){
-  listing.find({}).exec((err, data) => {
+const get = function(callback){
+  listing.find({listingId: 1}).exec((err, data) => {
     if(err){
       callback(err)
     } else {
@@ -31,5 +31,5 @@ const getAll = function(callback){
 
 module.exports={
   listing,
-  getAll
+  get
 }

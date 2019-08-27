@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(`${__dirname}/../client/dist`));
 
-app.get('/api/listings', (req, res) => {
-  db.getAll((err, data) => {
+app.get('/api/listings/1', (req, res) => {
+  db.get((err, data) => {
     if (err){
       console.log(err);
       return;
