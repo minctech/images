@@ -11,14 +11,13 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/api/listings/1', (req, res) => {
   db.get((err, data) => {
-    if (err){
+    if (err) {
       console.log(err);
-      return;
     } else {
-      res.send(data)
+      res.send(data);
     }
-  })
-})
+  });
+});
 
 app.listen(3000, () => {
   console.log('listening on port 3000');

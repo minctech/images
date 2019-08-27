@@ -22,6 +22,7 @@ const listingsGenerator = function () {
   const finalArr = [];
   // each loop we create a new listing that gets pushed into the finalArr.
   while (listingsCount <= 100) {
+    let imageLoopCount = 0;
     let imageCount = 0;
     const listingImages = [];
     const imagesUsedObj = {};
@@ -31,10 +32,11 @@ const listingsGenerator = function () {
     });
     // within the listing loop we have another loop that creates a new image and pushes it into the images property of the listing.
     while (imageCount <= 39) {
-      imageCount++;
+      imageLoopCount++;
       const num = getRandomInt(101);
       const descriptionIndex = getRandomInt(descriptions.length);
       if (!imagesUsedObj.hasOwnProperty(num)) {
+        imageCount++;
         const newImageSource = `https://images-for-fec-project.s3-us-west-1.amazonaws.com/${num}.jpg`;
         imagesUsedObj[num] = num;
         const desc = descriptions[descriptionIndex];
