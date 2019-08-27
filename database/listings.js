@@ -20,10 +20,17 @@ const listingSchema = new Schema({
 
 const listing = mongoose.model('listing', listingSchema);
 
+<<<<<<< HEAD
 const get = function (callback) {
   listing.find({ listingId: 1 }).exec((err, data) => {
     if (err) {
       callback(err);
+=======
+const getAll = function(callback){
+  listing.find({}).exec((err, data) => {
+    if(err){
+      callback(err)
+>>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.
     } else {
       callback(null, data);
     }
@@ -32,5 +39,10 @@ const get = function (callback) {
 
 module.exports = {
   listing,
+<<<<<<< HEAD
   get,
 };
+=======
+  getAll
+}
+>>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.

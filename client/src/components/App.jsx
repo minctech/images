@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
-import axios from 'axios';
-import styled from 'styled-components'
+
+import styled from 'styled-components';
+
+
 
 const Button = styled.button`
   display: inline-block;
@@ -15,10 +17,12 @@ const Button = styled.button`
   display: block;
 `;
 
+
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
+
        images:[],
        imagesForHero: undefined,
        toggle: false,
@@ -51,6 +55,9 @@ class App extends Component {
   onToggle(){
     let currentToggle = this.state.toggle;
     this.setState({toggle: !currentToggle})
+
+    }
+
   }
 
   changeCurrentPhoto(current){
@@ -99,7 +106,7 @@ class App extends Component {
           nextButtonImage = {this.state.nextButtonImage}
         />
         }
-      </div>
+
     )
   }
 }

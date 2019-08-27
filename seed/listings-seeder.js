@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost/appData');
 
 // a function that generates a random number between 1 and max number
 const getRandomInt = function (max) {
-  return Math.floor(Math.random() * Math.floor(max)) + 1;
+  return Math.floor(Math.random() * Math.floor(max));
 };
 
 
@@ -32,7 +32,10 @@ const listingsGenerator = function () {
     });
     // within the listing loop we have another loop that creates a new image and pushes it into the images property of the listing.
     while (imageCount <= 39) {
+<<<<<<< HEAD
       imageLoopCount++;
+=======
+>>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.
       const num = getRandomInt(101);
       const descriptionIndex = getRandomInt(descriptions.length);
       if (!imagesUsedObj.hasOwnProperty(num)) {
@@ -48,6 +51,7 @@ const listingsGenerator = function () {
         };
         newListing.images.push(newImage);
       }
+      imageCount++;
     }
     finalArr.push(newListing);
     listingsCount++;
