@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 const TinyGallery = (props) => (
   <div id="tiny-gallery">
-    <p>TinyGallery</p>
+    {props.images.map((image) =>(
+      <img key={image.imageId} src={image.imageSource} onClick={()=>(props.changeCurrentPhoto(image))} />
+))}
   </div>
 )
 

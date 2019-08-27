@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 mongoose.connect('mongodb://localhost/appData');
@@ -19,17 +20,17 @@ const listingSchema = new Schema({
 
 const listing = mongoose.model('listing', listingSchema);
 
-const get = function(callback){
-  listing.find({listingId: 1}).exec((err, data) => {
-    if(err){
-      callback(err)
+const get = function (callback) {
+  listing.find({ listingId: 1 }).exec((err, data) => {
+    if (err) {
+      callback(err);
     } else {
-      callback(null, data)
+      callback(null, data);
     }
-  })
-}
+  });
+};
 
-module.exports={
+module.exports = {
   listing,
-  get
-}
+  get,
+};
