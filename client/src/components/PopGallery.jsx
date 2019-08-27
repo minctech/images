@@ -3,7 +3,7 @@ import TinyGallery from './TinyGallery.jsx';
 
 const PopGallery = (props) => (
   <div>
-    <p>PopGallery</p>
+    <p onClick={props.onToggle}>PopGallery</p>
     <TinyGallery className="tiny-gallery"/>
     <div id="image-tracker"></div>
     <div className="description"></div>
