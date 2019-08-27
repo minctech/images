@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
-<<<<<<< HEAD
-import axios from 'axios';
+
 import styled from 'styled-components';
+
 
 
 const Button = styled.button`
@@ -16,14 +16,13 @@ const Button = styled.button`
   border-radius: 3px;
   display: block;
 `;
-=======
->>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.
+
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-<<<<<<< HEAD
+
        images:[],
        imagesForHero: undefined,
        toggle: false,
@@ -56,10 +55,9 @@ class App extends Component {
   onToggle(){
     let currentToggle = this.state.toggle;
     this.setState({toggle: !currentToggle})
-=======
 
     }
->>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.
+
   }
 
   changeCurrentPhoto(current){
@@ -88,7 +86,6 @@ class App extends Component {
   render(){
     return (
       <div>
-<<<<<<< HEAD
         {this.state.imagesForHero && !this.state.toggle &&
         <HeroImages
            changeCurrentPhoto={this.changeCurrentPhoto}
@@ -109,12 +106,7 @@ class App extends Component {
           nextButtonImage = {this.state.nextButtonImage}
         />
         }
-=======
-        <p>App</p>
-        <HeroImages/>
-        <PopGallery/>
->>>>>>> parent of 8b4a110... wrote componentDidMount, getListing, onToggle functions in App component. Loaded five images on HeroImages component. Created who images button on App Component.
-      </div>
+
     )
   }
 }
