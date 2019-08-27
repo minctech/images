@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
+import axios from 'axios';
+import styled from 'styled-components'
+
+const Button = styled.button`
+  display: inline-block;
+  color: blue;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  display: block;
+`;
+
 
 class App extends Component {
   constructor(props){
@@ -36,9 +50,26 @@ class App extends Component {
   render(){
     return (
       <div>
-        <p>App</p>
-        <HeroImages/>
-        <PopGallery/>
+        {this.state.imagesForHero && !this.state.toggle &&
+        <HeroImages
+           changeCurrentPhoto={this.changeCurrentPhoto}
+           imagesForHero={this.state.imagesForHero}
+           onToggle={this.onToggle}
+        />
+        }
+
+        {!this.state.toggle && <Button className="show-images" onClick={this.onToggle}>Show Images</Button>}
+
+        {this.state.toggle &&
+        <PopGallery
+          changeCurrentPhoto={this.changeCurrentPhoto}
+          currentPhoto={this.state.currentPhoto}
+          images={this.state.images}
+          onToggle={this.onToggle}
+          backButtonImage = {this.state.backButtonImage}
+          nextButtonImage = {this.state.nextButtonImage}
+        />
+        }
       </div>
     )
   }
