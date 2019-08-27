@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   display: inline-block;
-  color: palevioletred;
+  color: blue;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -14,6 +14,7 @@ const Button = styled.button`
   border-radius: 3px;
   display: block;
 `;
+
 
 class App extends Component {
   constructor(props){
