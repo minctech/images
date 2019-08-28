@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
@@ -104,4 +105,3 @@ class App extends Component {
     )
   }
 }
-export default App;

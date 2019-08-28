@@ -47,6 +47,7 @@ const HeroImages = (props) => (
         </SmallContainer>
       </Grid>
 
+
   </div>
 );
 

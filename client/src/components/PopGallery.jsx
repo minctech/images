@@ -3,7 +3,9 @@ import TinyGallery from './TinyGallery.jsx';
 
 const PopGallery = (props) => (
   <div>
+
     <img className="x-button" onClick={props.onToggle} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/x+close+button.PNG"/>
+
     <div className="currentPhotoSection">
       <img className="backButton" onClick={()=>(props.changeCurrentPhoto(props.nextButtonImage))} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/back+button.PNG"/>
       <img className="currentPhoto" src={props.currentPhoto.imageSource}/>
