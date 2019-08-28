@@ -4,7 +4,7 @@ import PopGallery from './PopGallery.jsx';
 import axios from 'axios';
 import styled from 'styled-components'
 
-const Button = styled.button`
+const button = styled.button`
   display: inline-block;
   color: blue;
   font-size: 1em;
@@ -20,8 +20,38 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-
+       images:[],
+       imagesForHero: undefined,
+       toggle: false,
+       currentPhoto:{},
+       backButtonImage:{},
+       nextButtonImage:{}
     }
+    this.onToggle = this.onToggle.bind(this)
+    this.changeCurrentPhoto = this.changeCurrentPhoto.bind(this)
+  }
+
+  componentDidMount(){
+    return axios.get('api/listings/1')
+    .then((response) => {
+      this.setState({
+        images: response.data[0].images,
+        imagesForHero: response.data[0].images.slice(0,5),
+        currentPhoto: response.data[0].images[0]
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
+  getListing(){
+
+  }
+
+  onToggle(){
+    let currentToggle = this.state.toggle;
+    this.setState({toggle: !currentToggle})
   }
 
   changeCurrentPhoto(current){
@@ -58,7 +88,7 @@ class App extends Component {
         />
         }
 
-        {!this.state.toggle && <Button className="show-images" onClick={this.onToggle}>Show Images</Button>}
+        {!this.state.toggle && <button className="show-images" onClick={this.onToggle}>Show Images</button>}
 
         {this.state.toggle &&
         <PopGallery
@@ -74,5 +104,4 @@ class App extends Component {
     )
   }
 }
-
 export default App;
