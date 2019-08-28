@@ -82,3 +82,7 @@ for (let i = 0; i < listingArray.length; i++) {
 const exit = function () {
   mongoose.disconnect();
 };
+
+const oneListing = listingArray[1];
+
+module.exports = oneListing;
