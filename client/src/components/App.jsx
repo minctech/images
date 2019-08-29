@@ -45,10 +45,6 @@ class App extends Component {
     })
   }
 
-  getListing(){
-
-  }
-
   onToggle(){
     let currentToggle = this.state.toggle;
     this.setState({toggle: !currentToggle})
