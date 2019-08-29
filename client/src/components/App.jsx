@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 41e33269bff0dcb6db6c5033fb50faa6e2e30193
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
@@ -43,6 +47,10 @@ class App extends Component {
     .catch((error) => {
       console.log(error);
     })
+  }
+
+  getListing(){
+
   }
 
   onToggle(){
@@ -100,4 +108,7 @@ class App extends Component {
     )
   }
 }
+<<<<<<< HEAD
 export default App;
+=======
+>>>>>>> 41e33269bff0dcb6db6c5033fb50faa6e2e30193
