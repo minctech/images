@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import TinyGallery from './TinyGallery.jsx';
 import styled from 'styled-components';
 
+
+const TopStyle = styled.div`
+  padding: 5px;
+`
 const Grid = styled.div `
   display: flex;
   flex-direction: row;
@@ -22,11 +26,15 @@ const TinyGalleryDesigner = styled.div`
 `
 const XButton = styled.div`
    display: flex;
+   height: 50px;
+   width: 50px;
    justify-content: flex-end;
+
 `
 const Description = styled.div`
   width: 400px;
   height: 350px;
+  margin: auto;
 `
 
 const GalleryButton = styled.img`
@@ -35,6 +43,7 @@ const GalleryButton = styled.img`
 `
 const PopGallery = (props) => (
   <div>
+    <TopStyle/>
     <XButton>
       <img className="x-button" onClick={props.onToggle} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/x+close+button.PNG"/>
     </XButton>

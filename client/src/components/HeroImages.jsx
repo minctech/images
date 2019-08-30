@@ -27,7 +27,7 @@ const SmallContainer = styled.div `
 const HeaderImg = styled.img`
   width: 750px;
   height: 500px;
-  border:1px solid #021a40;
+  border:2px solid black;
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
   -ms-transition: all .2s ease;
@@ -78,13 +78,24 @@ const Button = styled.button`
   left: auto;
   right: 24px;
   bottom: 24px;
-  height: 25px;
-  width: 100px;
-  border-radius: 5px;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
-  z-index: 1;
+  height: 40px;
+  width: 120px
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  border-color: #f2f2f2;
+  background: #f2f2f2;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 12px;
+  overflow: hidden;
+  border-width: 0;
+  border-radius: 4px;
+  color: #000000;
+  -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+
 `;
 
 Img.displayName = 'Img';
@@ -107,7 +118,7 @@ const HeroImages = (props) => (
         </ImgWrapper>
         <ImgWrapper>
           <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[4])}} src={props.imagesForHero[4].imageSource}/>
-          <Button className="show-images" onClick={props.onToggle}>Show Images</Button>
+          <Button className="show-images" onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[0])}}>View Photos</Button>
         </ImgWrapper>
         </SmallContainer>
       </Grid>

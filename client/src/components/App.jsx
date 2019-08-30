@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
 import axios from 'axios';
-import styled from 'styled-components'
+import { createGlobalStyle } from "styled-components";
+
+const RalewayFont = createGlobalStyle`
+  body {
+    @import url(https://fonts.googleapis.com/css?family=Raleway);
+    font-family: 'Raleway', sans-serif;
+  }
+`
 
 
 
@@ -90,6 +97,7 @@ class App extends Component {
   render(){
     return (
       <div>
+        <RalewayFont />
         {this.state.imagesForHero && !this.state.toggle &&
         <HeroImages
            changeCurrentPhoto={this.changeCurrentPhoto}
