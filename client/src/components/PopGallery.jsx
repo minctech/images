@@ -3,18 +3,17 @@ import TinyGallery from './TinyGallery.jsx';
 import styled from 'styled-components';
 
 
-const TopStyle = styled.div`
-  padding: 5px;
-`
+
 const Grid = styled.div `
   display: flex;
   flex-direction: row;
 `
 
 const CurrentImg = styled.img`
-  height: 600px;
+  height: 550px;
   width: 700px;
   border-radius: 30px;
+  vertical-align: top
 `
 const TinyGalleryDesigner = styled.div`
   display: flex;
@@ -22,30 +21,50 @@ const TinyGalleryDesigner = styled.div`
   max-height: 75px;
   max-width: 400px;
   overflow: hidden;
+  margin-top: 40px;
 
+`
+
+const XImg = styled.img`
+   height: 65px;
+   width: 55px;
 `
 const XButton = styled.div`
    display: flex;
-   height: 50px;
-   width: 50px;
    justify-content: flex-end;
+   margin-top: 40px;
+   margin-right: 40px;
 
 `
-const Description = styled.div`
+const DescriptionContainer = styled.div`
   width: 400px;
   height: 350px;
-  margin: auto;
+  overflow: hidden;
+
+`
+
+const ImgTracker = styled.div`
+  margin-top: 50px;
+  font-weight: bold;
+`
+
+const DescriptionDiv = styled.div`
+  margin-top: 30px
 `
 
 const GalleryButton = styled.img`
-  height: 600px;
-  width: 200px;
+  position: relative;
+  height: 500px;
+  width: 150px;
+  margin: 5px;
+  vertical-align: top
+  margin-right: 30px;
+  margin-left: 30px;
 `
 const PopGallery = (props) => (
   <div>
-    <TopStyle/>
     <XButton>
-      <img className="x-button" onClick={props.onToggle} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/x+close+button.PNG"/>
+    <XImg className="x-button" onClick={props.onToggle} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/x+close+button.PNG"/>
     </XButton>
     <Grid>
       <div className="currentPhotoSection">
@@ -53,18 +72,14 @@ const PopGallery = (props) => (
         <CurrentImg className="currentPhoto" src={props.currentPhoto.imageSource}/>
         <GalleryButton className="nextButton" onClick={()=>(props.changeCurrentPhoto(props.nextButtonImage))} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/next+buton.PNG"/>
       </div>
-    <Description>
+    <DescriptionContainer>
 
      <TinyGalleryDesigner>
        <TinyGallery changeCurrentPhoto={props.changeCurrentPhoto} className="tiny-gallery" tinyGalleryImages={props.tinyGalleryImages} currentPhoto={props.currentPhoto}/>
     </TinyGalleryDesigner>
-
-
-      <div className="currentPhotoDescriptionSection">
-        <div className="image-tracker">{`${props.currentPhoto.imagePlaceNumber} / ${props.images.length}`}</div>
-        <div className="description">{props.currentPhoto.imageDescription}</div>
-      </div>
-    </Description>
+        <ImgTracker className="image-tracker">{`${props.currentPhoto.imagePlaceNumber} / ${props.images.length}`}</ImgTracker>
+        <DescriptionDiv className="description">{props.currentPhoto.imageDescription}</DescriptionDiv>
+    </DescriptionContainer>
     </Grid>
   </div>
 );
