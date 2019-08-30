@@ -26,18 +26,17 @@ const TinyGalleryDesigner = styled.div`
 `
 
 const XImg = styled.img`
-   height: 65px;
-   width: 55px;
+ height: 60px;
+ width: 230px;
 `
 const XButton = styled.div`
    display: flex;
    justify-content: flex-end;
    margin-top: 40px;
-   margin-right: 40px;
 
 `
 const DescriptionContainer = styled.div`
-  width: 400px;
+  width: 380px;
   height: 350px;
   overflow: hidden;
 
