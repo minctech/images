@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 41e33269bff0dcb6db6c5033fb50faa6e2e30193
 import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
 import axios from 'axios';
 import styled from 'styled-components'
 
-const button = styled.button`
-  display: inline-block;
-  color: blue;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  display: block;
-`;
+
 
 
 class App extends Component {
@@ -25,6 +12,7 @@ class App extends Component {
     super(props)
     this.state = {
        images:[],
+       tinyGalleryImages: undefined,
        imagesForHero: undefined,
        toggle: false,
        currentPhoto:{},
@@ -49,10 +37,6 @@ class App extends Component {
     })
   }
 
-  getListing(){
-
-  }
-
   onToggle(){
     let currentToggle = this.state.toggle;
     this.setState({toggle: !currentToggle})
@@ -61,23 +45,45 @@ class App extends Component {
   changeCurrentPhoto(current){
     let back;
     let next;
+    let newImagesArray = [];
+    console.log(current, "current")
    if (this.state.images[current.imagePlaceNumber - 2] === undefined){
      back = this.state.images[this.state.images.length - 1]
+     newImagesArray[0] = current
+     newImagesArray[1] = this.state.images[current.imagePlaceNumber]
+     newImagesArray[2] = this.state.images[current.imagePlaceNumber + 1]
+     newImagesArray[3] = this.state.images[current.imagePlaceNumber + 2]
+     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 3]
+   } else if (this.state.images[current.imagePlaceNumber - 3] === undefined) {
+     back = this.state.images[current.imagePlaceNumber - 2]
+     newImagesArray[0] = back
+     newImagesArray[1] = current
+     newImagesArray[2] = this.state.images[current.imagePlaceNumber]
+     newImagesArray[3] = this.state.images[current.imagePlaceNumber + 1]
+     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 2]
    } else {
      back = this.state.images[current.imagePlaceNumber - 2]
+     newImagesArray[0] = this.state.images[current.imagePlaceNumber - 3]
+     newImagesArray[1] = back
+     newImagesArray[2] = current
+     newImagesArray[3] = this.state.images[current.imagePlaceNumber]
+     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 1]
    }
-
+    console.log(newImagesArray)
    if (this.state.images[current.imagePlaceNumber] === undefined){
      next = this.state.images[0]
    } else {
      next = this.state.images[current.imagePlaceNumber]
+     console.log(next, 'next')
    }
      this.setState({
        currentPhoto: current,
        backButtonImage: back,
        nextButtonImage: next,
+       tinyGalleryImages: newImagesArray,
        toggle:true
       })
+      console.log(this.state.imagesForHero)
 
   }
 
@@ -92,23 +98,21 @@ class App extends Component {
         />
         }
 
-        {!this.state.toggle && <button className="show-images" onClick={this.onToggle}>Show Images</button>}
+
 
         {this.state.toggle &&
         <PopGallery
           changeCurrentPhoto={this.changeCurrentPhoto}
           currentPhoto={this.state.currentPhoto}
-          images={this.state.images}
+          tinyGalleryImages={this.state.tinyGalleryImages}
           onToggle={this.onToggle}
           backButtonImage = {this.state.backButtonImage}
           nextButtonImage = {this.state.nextButtonImage}
+          images = {this.state.images}
         />
         }
       </div>
     )
   }
 }
-<<<<<<< HEAD
 export default App;
-=======
->>>>>>> 41e33269bff0dcb6db6c5033fb50faa6e2e30193
