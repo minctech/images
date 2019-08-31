@@ -6,15 +6,7 @@ const Grid = styled.div `
   flex-wrap: wrap
   flex-direction: row;
   overflow: hidden;
-   -webkit-filter: brightness(100%);
-  &:hover {
-    -webkit-filter: brightness(70%);
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-  }
+  border:2px solid #021a40;
 `
 const SmallContainer = styled.div `
   display: flex;
@@ -25,19 +17,12 @@ const SmallContainer = styled.div `
 `
 
 const HeaderImg = styled.img`
-  width: 750px;
+  width: 753.5px;
   height: 500px;
   border:2px solid black;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
   vertical-align: middle;
   overflow: hidden;
   &:hover {
-    -webkit-filter: brightness(100%);
-    filter: brightness(100%);
     -webkit-transform:scale(1.1);
     -moz-transform:scale(1.1);
     -ms-transform:scale(1.1);
@@ -53,14 +38,9 @@ const ImgWrapper = styled.div`
 `
 
 const Img = styled.img`
-  width: 375px;
-  height: 250px;
-  border:1px solid #021a40;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
+  width: 374.5px;
+  height: 248px;
+  border:2px solid #021a40;
   vertical-align: middle;
   overflow: hidden;
   &:hover {

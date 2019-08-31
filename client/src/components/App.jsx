@@ -11,9 +11,6 @@ const RalewayFont = createGlobalStyle`
   }
 `
 
-
-
-
 class App extends Component {
   constructor(props){
     super(props)
@@ -24,7 +21,8 @@ class App extends Component {
        toggle: false,
        currentPhoto:{},
        backButtonImage:{},
-       nextButtonImage:{}
+       nextButtonImage:{},
+       imagesLength: 0
     }
     this.onToggle = this.onToggle.bind(this)
     this.changeCurrentPhoto = this.changeCurrentPhoto.bind(this)
@@ -36,7 +34,8 @@ class App extends Component {
       this.setState({
         images: response.data[0].images,
         imagesForHero: response.data[0].images.slice(0,5),
-        currentPhoto: response.data[0].images[0]
+        currentPhoto: response.data[0].images[0],
+        imagesLength: response.data[0].images.length
       })
     })
     .catch((error) => {
@@ -49,40 +48,67 @@ class App extends Component {
     this.setState({toggle: !currentToggle})
   }
 
+  nextFinder(current){
+    let currentPlaceNumber = current.imagePlaceNumber;
+    let images = this.state.images;
+    if (images[currentPlaceNumber] === undefined){
+      return images[0]
+    } else {
+      return images[currentPlaceNumber]
+    }
+  }
+
+  backFinder(current){
+    let currentPlaceNumber = current.imagePlaceNumber;
+    let images = this.state.images;
+    if (images[currentPlaceNumber - 2] === undefined){
+      return images[images.length - 1]
+    } else if (images[currentPlaceNumber - 3] === undefined) {
+      return images[currentPlaceNumber - 2]
+    } else {
+      return images[currentPlaceNumber - 2]
+    }
+  }
+
+  counterFinder(current){
+    let currentPlaceNumber = current.imagePlaceNumber;
+    let images = this.state.images;
+    if (images[currentPlaceNumber - 2] === undefined){
+      return -1
+    } else if (images[currentPlaceNumber] === undefined){
+      return -5
+    }else if (images[currentPlaceNumber - 3] === undefined) {
+      return -2
+    } else if (images[currentPlaceNumber + 1] === undefined) {
+      return -4
+    } else {
+      return -3
+    }
+  }
   changeCurrentPhoto(current){
-    let back;
-    let next;
+    let back = this.backFinder(current);
+    let next = this.nextFinder(current);
+    let currentPlaceNumber = current.imagePlaceNumber;
+    let images = this.state.images;
+    let counter = this.counterFinder(current);
     let newImagesArray = [];
-    console.log(current, "current")
-   if (this.state.images[current.imagePlaceNumber - 2] === undefined){
-     back = this.state.images[this.state.images.length - 1]
-     newImagesArray[0] = current
-     newImagesArray[1] = this.state.images[current.imagePlaceNumber]
-     newImagesArray[2] = this.state.images[current.imagePlaceNumber + 1]
-     newImagesArray[3] = this.state.images[current.imagePlaceNumber + 2]
-     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 3]
-   } else if (this.state.images[current.imagePlaceNumber - 3] === undefined) {
-     back = this.state.images[current.imagePlaceNumber - 2]
-     newImagesArray[0] = back
-     newImagesArray[1] = current
-     newImagesArray[2] = this.state.images[current.imagePlaceNumber]
-     newImagesArray[3] = this.state.images[current.imagePlaceNumber + 1]
-     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 2]
-   } else {
-     back = this.state.images[current.imagePlaceNumber - 2]
-     newImagesArray[0] = this.state.images[current.imagePlaceNumber - 3]
-     newImagesArray[1] = back
-     newImagesArray[2] = current
-     newImagesArray[3] = this.state.images[current.imagePlaceNumber]
-     newImagesArray[4] = this.state.images[current.imagePlaceNumber + 1]
-   }
-    console.log(newImagesArray)
-   if (this.state.images[current.imagePlaceNumber] === undefined){
-     next = this.state.images[0]
-   } else {
-     next = this.state.images[current.imagePlaceNumber]
-     console.log(next, 'next')
-   }
+    const arrayCreator = () => {
+      //base case
+      // if newImagesArray has a length of 5
+      if (newImagesArray.length === 5){
+        //return nothing
+        return;
+      }
+      // recursive case
+      // push of images with the index of placement number to newImagesArray
+      newImagesArray.push(images[currentPlaceNumber + counter])
+      //add one to counter
+      counter++
+      // run function again
+      arrayCreator()
+    }
+
+    arrayCreator()
      this.setState({
        currentPhoto: current,
        backButtonImage: back,
@@ -90,8 +116,6 @@ class App extends Component {
        tinyGalleryImages: newImagesArray,
        toggle:true
       })
-      console.log(this.state.imagesForHero)
-
   }
 
   render(){
@@ -105,9 +129,6 @@ class App extends Component {
            onToggle={this.onToggle}
         />
         }
-
-
-
         {this.state.toggle &&
         <PopGallery
           changeCurrentPhoto={this.changeCurrentPhoto}
@@ -116,7 +137,7 @@ class App extends Component {
           onToggle={this.onToggle}
           backButtonImage = {this.state.backButtonImage}
           nextButtonImage = {this.state.nextButtonImage}
-          images = {this.state.images}
+          imagesLength = {this.state.imagesLength}
         />
         }
       </div>

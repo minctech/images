@@ -18,7 +18,7 @@ const CurrentImg = styled.img`
 const TinyGalleryDesigner = styled.div`
   display: flex;
   flex-direction: row;
-  max-height: 75px;
+  max-height: 100px;
   max-width: 400px;
   overflow: hidden;
   margin-top: 40px;
@@ -26,8 +26,8 @@ const TinyGalleryDesigner = styled.div`
 `
 
 const XImg = styled.img`
- height: 60px;
- width: 230px;
+ height: 50px;
+ width: 250px;
 `
 const XButton = styled.div`
    display: flex;
@@ -36,7 +36,7 @@ const XButton = styled.div`
 
 `
 const DescriptionContainer = styled.div`
-  width: 380px;
+  width: 350px;
   height: 350px;
   overflow: hidden;
 
@@ -67,7 +67,7 @@ const PopGallery = (props) => (
     </XButton>
     <Grid>
       <div className="currentPhotoSection">
-        <GalleryButton className="backButton" onClick={()=>(props.changeCurrentPhoto(props.nextButtonImage))} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/back+button.PNG"/>
+        <GalleryButton className="backButton" onClick={()=>(props.changeCurrentPhoto(props.backButtonImage))} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/back+button.PNG"/>
         <CurrentImg className="currentPhoto" src={props.currentPhoto.imageSource}/>
         <GalleryButton className="nextButton" onClick={()=>(props.changeCurrentPhoto(props.nextButtonImage))} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/next+buton.PNG"/>
       </div>
@@ -76,7 +76,7 @@ const PopGallery = (props) => (
      <TinyGalleryDesigner>
        <TinyGallery changeCurrentPhoto={props.changeCurrentPhoto} className="tiny-gallery" tinyGalleryImages={props.tinyGalleryImages} currentPhoto={props.currentPhoto}/>
     </TinyGalleryDesigner>
-        <ImgTracker className="image-tracker">{`${props.currentPhoto.imagePlaceNumber} / ${props.images.length}`}</ImgTracker>
+        <ImgTracker className="image-tracker">{`${props.currentPhoto.imagePlaceNumber} / ${props.imagesLength}`}</ImgTracker>
         <DescriptionDiv className="description">{props.currentPhoto.imageDescription}</DescriptionDiv>
     </DescriptionContainer>
     </Grid>
