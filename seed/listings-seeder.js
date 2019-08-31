@@ -78,6 +78,3 @@ for (let i = 0; i < listingArray.length; i++) {
 const exit = function () {
   mongoose.disconnect();
 };
-
-
-
