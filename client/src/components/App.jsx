@@ -48,49 +48,35 @@ class App extends Component {
     this.setState({toggle: !currentToggle})
   }
 
-  nextFinder(current){
+  backNextCounterFinder(current){
     let currentPlaceNumber = current.imagePlaceNumber;
     let images = this.state.images;
-    if (images[currentPlaceNumber] === undefined){
-      return images[0]
-    } else {
-      return images[currentPlaceNumber]
-    }
-  }
-
-  backFinder(current){
-    let currentPlaceNumber = current.imagePlaceNumber;
-    let images = this.state.images;
+    let back = images[currentPlaceNumber - 2]
+    let count;
+    let next = images[currentPlaceNumber]
     if (images[currentPlaceNumber - 2] === undefined){
-      return images[images.length - 1]
-    } else if (images[currentPlaceNumber - 3] === undefined) {
-      return images[currentPlaceNumber - 2]
-    } else {
-      return images[currentPlaceNumber - 2]
-    }
-  }
-
-  counterFinder(current){
-    let currentPlaceNumber = current.imagePlaceNumber;
-    let images = this.state.images;
-    if (images[currentPlaceNumber - 2] === undefined){
-      return -1
+      back = images[images.length - 1]
+      count = -1
     } else if (images[currentPlaceNumber] === undefined){
-      return -5
+      next = images[0]
+      count =  -5
     }else if (images[currentPlaceNumber - 3] === undefined) {
-      return -2
+      count =  -2
     } else if (images[currentPlaceNumber + 1] === undefined) {
-      return -4
+      count =  -4
     } else {
-      return -3
+      count =  -3
     }
+    this.setState({
+      backButtonImage: back,
+      nextButtonImage: next,
+    })
+    return count
   }
   changeCurrentPhoto(current){
-    let back = this.backFinder(current);
-    let next = this.nextFinder(current);
     let currentPlaceNumber = current.imagePlaceNumber;
     let images = this.state.images;
-    let counter = this.counterFinder(current);
+    let counter = this.backNextCounterFinder(current);
     let newImagesArray = [];
     const arrayCreator = () => {
       //base case
@@ -111,8 +97,6 @@ class App extends Component {
     arrayCreator()
      this.setState({
        currentPhoto: current,
-       backButtonImage: back,
-       nextButtonImage: next,
        tinyGalleryImages: newImagesArray,
        toggle:true
       })
