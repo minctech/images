@@ -63,18 +63,20 @@ const listingArray = listingsGenerator();
 // this is a tracker that makes sure we save every indexed element in the listingArray before we disconnect from the mongoose database.
 let done = 0;
 
-// A loop that looks at every single isting in the listingArray and saves it to our database.
-for (let i = 0; i < listingArray.length; i++) {
-  listingArray[i].save((err, result) => {
-    done++;
-    // once the done counter reaches the listingArray length it will call the exit function.
-    if (done === listingArray.length) {
-      exit();
-    }
-  });
-}
-
 // the exit function disconnectes from the mongodatabase.
 const exit = function () {
   mongoose.disconnect();
 };
+
+
+// A loop that looks at every single isting in the listingArray and saves it to our database.
+for (let i = 0; i < listingArray.length; i++) {
+  listingArray[i].save((err, result) => {
+    done++;
+  });
+      // once the done counter reaches the listingArray length it will call the exit function.
+      if (done === listingArray.length) {
+        exit();
+      }
+}
+

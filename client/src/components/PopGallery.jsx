@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import TinyGallery from './TinyGallery.jsx';
-import styled from 'styled-components';
 
 
 
-const Grid = styled.div `
+
+const Grid = styled.div`
   display: flex;
   flex-direction: row;
 `

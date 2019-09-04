@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
 
-const Grid = styled.div `
+
+const Grid = styled.div`
   display: flex;
   flex-wrap: wrap
   flex-direction: row;
   overflow: hidden;
   border:2px solid #021a40;
 `
-const SmallContainer = styled.div `
+const SmallContainer = styled.div`
   display: flex;
   flex-wrap: wrap
   width: 50%;

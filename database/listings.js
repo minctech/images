@@ -20,8 +20,8 @@ const listingSchema = new Schema({
 
 const listing = mongoose.model('listing', listingSchema);
 
-const get = function (callback) {
-  listing.find({ listingId: 1 }).exec((err, data) => {
+const get = function (id, callback) {
+  listing.find({ listingId: id }).exec((err, data) => {
     if (err) {
       callback(err);
     } else {
