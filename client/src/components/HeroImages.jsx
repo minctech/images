@@ -75,11 +75,11 @@ const Button = styled.button`
   color: #000000;
   -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
-
 `;
 
 Img.displayName = 'Img';
-HeaderImg.displayName = 'HeaderImg'
+HeaderImg.displayName = 'HeaderImg';
+
 const HeroImages = (props) => (
   <div>
      <Grid>
