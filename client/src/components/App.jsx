@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import HeroImages from './HeroImages.jsx';
 import PopGallery from './PopGallery.jsx';
 import axios from 'axios';
-import { createGlobalStyle } from "styled-components";
 
-const RalewayFont = createGlobalStyle`
-  body {
-    @import url(https://fonts.googleapis.com/css?family=Raleway);
-    font-family: 'Raleway', sans-serif;
-  }
+
+const RalewayFont = styled.div`
+font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
 `
 
 class Images extends Component {
@@ -29,7 +26,8 @@ class Images extends Component {
   }
 
   componentDidMount(){
-    return axios.get('api/listings/1')
+    let listing = window.location.href.split('/')[5];
+    return axios.get(`http://localhost:3777/api/listings/${listing}/images`)
     .then((response) => {
       this.setState({
         images: response.data[0].images,
@@ -104,8 +102,7 @@ class Images extends Component {
 
   render(){
     return (
-      <div>
-        <RalewayFont />
+      <RalewayFont>
         {this.state.imagesForHero && !this.state.toggle &&
         <HeroImages
            changeCurrentPhoto={this.changeCurrentPhoto}
@@ -124,7 +121,8 @@ class Images extends Component {
           imagesLength = {this.state.imagesLength}
         />
         }
-      </div>
+      </RalewayFont>
+
     )
   }
 }
