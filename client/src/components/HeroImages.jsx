@@ -3,25 +3,27 @@ import React, { Component } from 'react';
 
 const Grid = styled.div`
   display: flex;
-  flex-wrap: wrap
   flex-direction: row;
-  overflow: hidden;
   border:2px solid #021a40;
+  position: static;
 `
 const SmallContainer = styled.div`
   display: flex;
-  flex-wrap: wrap
-  width: 50%;
-  height: auto;
-  overflow: hidden;
+  flex-direction: row;
+  position: relative;
 `
 
+const anotherDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+
 const HeaderImg = styled.img`
-  width: 753.5px;
+  width: 700px;
   height: 500px;
   border:2px solid black;
   vertical-align: middle;
-  overflow: hidden;
   &:hover {
     -webkit-transform:scale(1.1);
     -moz-transform:scale(1.1);
@@ -32,15 +34,13 @@ const HeaderImg = styled.img`
 `
 
 const ImgWrapper = styled.div`
-  display: inline-block;
-  position: relative;
   overflow: hidden;
+  border:2px solid #021a40;
 `
 
 const Img = styled.img`
   width: 374.5px;
-  height: 248px;
-  border:2px solid #021a40;
+  height: 250px;
   vertical-align: middle;
   overflow: hidden;
   &:hover {
@@ -87,12 +87,15 @@ const HeroImages = (props) => (
         <HeaderImg onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[0])}} src={props.imagesForHero[0].imageSource}/>
         </ImgWrapper>
        <SmallContainer>
+       <anotherDiv>
         <ImgWrapper>
           <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[1])}} src={props.imagesForHero[1].imageSource}/>
         </ImgWrapper>
         <ImgWrapper>
            <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[2])}} src={props.imagesForHero[2].imageSource}/>
         </ImgWrapper>
+        </anotherDiv>
+        <anotherDiv>
         <ImgWrapper>
            <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[3])}} src={props.imagesForHero[3].imageSource}/>
         </ImgWrapper>
@@ -100,6 +103,7 @@ const HeroImages = (props) => (
           <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[4])}} src={props.imagesForHero[4].imageSource}/>
           <Button className="show-images" onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[0])}}>View Photos</Button>
         </ImgWrapper>
+        </anotherDiv>
         </SmallContainer>
       </Grid>
 
