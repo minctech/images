@@ -3,6 +3,16 @@ import TinyGallery from './TinyGallery.jsx';
 
 
 
+ const Overlay = styled.div`
+  opacity:1;
+  background-color:#FFF;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
+`
 
 const Grid = styled.div`
   display: flex;
@@ -61,7 +71,7 @@ const GalleryButton = styled.img`
   margin-left: 30px;
 `
 const PopGallery = (props) => (
-  <div>
+  <Overlay>
     <XButton>
     <XImg className="x-button" onClick={props.onToggle} src="https://images-for-fec-project.s3-us-west-1.amazonaws.com/x+close+button.PNG"/>
     </XButton>
@@ -80,7 +90,7 @@ const PopGallery = (props) => (
         <DescriptionDiv className="description">{props.currentPhoto.imageDescription}</DescriptionDiv>
     </DescriptionContainer>
     </Grid>
-  </div>
+  </Overlay>
 );
 
 
