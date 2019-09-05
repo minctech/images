@@ -7,13 +7,13 @@ const Grid = styled.div`
   border:2px solid #021a40;
   position: static;
 `
-const SmallContainer = styled.div`
+const ContainerOne = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
 `
 
-const anotherDiv = styled.div`
+const ContainerTwo = styled.div`
   display: flex;
   flex-direction: row;
 `
@@ -85,17 +85,17 @@ const HeroImages = (props) => (
      <Grid>
        <ImgWrapper>
         <HeaderImg onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[0])}} src={props.imagesForHero[0].imageSource}/>
-        </ImgWrapper>
-       <SmallContainer>
-       <anotherDiv>
+       </ImgWrapper>
+       <ContainerOne>
+       <ContainerTwo>
         <ImgWrapper>
           <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[1])}} src={props.imagesForHero[1].imageSource}/>
         </ImgWrapper>
         <ImgWrapper>
            <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[2])}} src={props.imagesForHero[2].imageSource}/>
         </ImgWrapper>
-        </anotherDiv>
-        <anotherDiv>
+        </ContainerTwo>
+        <ContainerTwo>
         <ImgWrapper>
            <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[3])}} src={props.imagesForHero[3].imageSource}/>
         </ImgWrapper>
@@ -103,11 +103,9 @@ const HeroImages = (props) => (
           <Img onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[4])}} src={props.imagesForHero[4].imageSource}/>
           <Button className="show-images" onClick={()=>{props.changeCurrentPhoto(props.imagesForHero[0])}}>View Photos</Button>
         </ImgWrapper>
-        </anotherDiv>
-        </SmallContainer>
+        </ContainerTwo>
+        </ContainerOne>
       </Grid>
-
-
   </div>
 );
 
