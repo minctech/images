@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  images:
+    build: project/
+    depends_on:
+      - 'database'
+    ports:
+      - '3777:3777'
+   
+  database:
+    image: mongo:latest
