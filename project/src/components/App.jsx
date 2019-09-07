@@ -27,7 +27,7 @@ class Images extends Component {
 
   componentDidMount(){
     let listing = window.location.href.split('/')[5];
-    return axios.get(`http://localhost:3777/api/listings/${listing}/images`)
+    return axios.get(`/api/listings/${listing}/images`)
     .then((response) => {
       this.setState({
         images: response.data[0].images,
