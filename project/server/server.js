@@ -2,23 +2,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/listings.js');
 const morgan = require('morgan')
+var cors = require('cors')
+var compression = require('compression')
+
 const app = express();
 var router = express.Router()
 
 app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(compression())
 
 app.use('/api/listings/:listing', express.static(`${__dirname}/../client/dist`));
 app.use(express.static(`${__dirname}/../client/dist`));
 
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://ec2-18-220-164-99.us-east-2.compute.amazonaws.com:3000');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
+app.use(cors());
 
 
 app.get('/api/listings/:listing/images', (req, res) => {

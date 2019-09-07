@@ -21,7 +21,7 @@ const Grid = styled.div`
 
 const CurrentImg = styled.img`
   height: 550px;
-  width: 700px;
+  width: 600px;
   border-radius: 30px;
   vertical-align: top
 `
