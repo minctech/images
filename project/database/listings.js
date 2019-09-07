@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-
+//
 mongoose.connect('mongodb://database/appData');
 // A schema for each image that is going to be stored in the images property of a listing.
 const imageSchema = new Schema({
