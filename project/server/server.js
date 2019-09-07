@@ -14,7 +14,7 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'http://ec2-18-220-164-99.us-east-2.compute.amazonaws.com:3000');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });

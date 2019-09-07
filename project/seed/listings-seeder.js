@@ -3,7 +3,7 @@ const db = require('../database/listings.js');
 
 
 // mongoose is connected to our appData database
-mongoose.connect('mongodb://localhost/appData');
+mongoose.connect('mongodb://database/appData');
 
 
 // a function that generates a random number between 1 and max number
@@ -73,10 +73,11 @@ const exit = function () {
 for (let i = 0; i < listingArray.length; i++) {
   listingArray[i].save((err, result) => {
     done++;
+    // once the done counter reaches the listingArray length it will call the exit function.
+    if (done === listingArray.length) {
+      mongoose.disconnect(process.exit());
+    }
   });
-      // once the done counter reaches the listingArray length it will call the exit function.
-      if (done === listingArray.length) {
-        exit();
-      }
+
 }
 
